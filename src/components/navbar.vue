@@ -116,6 +116,7 @@
     @media (max-width: 480px){
         .navbar-button {
             width: 100%;
+            transform: translateY(-50%);
         }
 
         .navbar-hamburger {
@@ -133,7 +134,8 @@
             align-items: flex-start;
             justify-content: initial;
             padding: 0;
-            transition: all 0.5s ease-in-out;
+            transition: all 0.7s ease-in-out;
+            transform: translateY(0px);
         }
 
         .navbar-button.open button {
