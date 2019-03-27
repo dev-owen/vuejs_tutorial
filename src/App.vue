@@ -13,7 +13,7 @@ export default {
   name: 'app',
   components: {
     navbar,
-    HelloWorld
+    HelloWorld,
   }
 }
 </script>

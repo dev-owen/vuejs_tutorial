@@ -4,27 +4,28 @@
             Honeybee
         </div>
         <div class="navbar-button" :class="{ open: isOpen }">
-            <button>FrontEnd</button>
-            <button>BackEnd</button>
-            <button>DeepLearning</button>
-            <button>Android</button>
+            <navbarButton v-bind:linkTo="'https://www.google.co.kr'" v-bind:buttonText="'FrontEnd'"></navbarButton>
+            <navbarButton v-bind:linkTo="'https://www.naver.com'" v-bind:buttonText="'BackEnd'"></navbarButton>
+            <navbarButton v-bind:buttonText="'DeepLearning'"></navbarButton>
+            <navbarButton v-bind:buttonText="'Android'"></navbarButton>
         </div>
         <div class="navbar-hamburger" @click="toggle()">
-                <span id="hambg">
-                    <div class="wrap" :class="{ open: isOpen }">
-                        <div class="item"></div>
-                        <div class="item"></div>
-                        <div class="item"></div>
-                    </div>
-                </span>
+            <span id="hambg">
+                <div class="wrap" :class="{ open: isOpen }">
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                </div>
+            </span>
         </div>
     </div>
 </template>
 
 <script>
+    import navbarButton from './navbarButton2.vue';
     export default {
         name: 'navbar',
-        data() {
+        data: function () {
             return {
                 isOpen: false
             };
@@ -33,6 +34,9 @@
             toggle() {
                 this.isOpen = !this.isOpen;
             }
+        },
+        components: {
+            navbarButton
         }
     }
 </script>
@@ -72,7 +76,7 @@
    .navbar-button button {
         padding: 18px;
         border: none;
-        background-color: transparent;
+        background-color: #fff;
    }
 
    .navbar-button button:hover {
@@ -115,8 +119,17 @@
 
     @media (max-width: 480px){
         .navbar-button {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            bottom: 0;
+            padding: 0;
             width: 100%;
-            transform: translateY(-50%);
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: initial;
+            transform: translateY(-100vh);
+            transition: transform .7s ease-in-out;
         }
 
         .navbar-hamburger {
@@ -126,16 +139,7 @@
         }
 
         .navbar-button.open {
-            position: fixed;
-            top: 80px;
-            left: 0;
-            bottom: 0;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: initial;
-            padding: 0;
-            transition: all 0.7s ease-in-out;
-            transform: translateY(0px);
+            transform: translateY(0);
         }
 
         .navbar-button.open button {
@@ -145,7 +149,7 @@
         }
 
         .navbar-button>button{
-            display: none;
+
         }
 
         #hambg {
@@ -155,9 +159,5 @@
         .wrap {
             display: flex;
         }
-
-
     }
-
-
 </style>
