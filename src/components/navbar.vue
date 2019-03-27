@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import navbarButton from './navbarButton2.vue';
+    import navbarButton from './navbarButton.vue';
     export default {
         name: 'navbar',
         data: function () {
