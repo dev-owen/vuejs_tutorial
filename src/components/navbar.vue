@@ -4,10 +4,7 @@
             Honeybee
         </div>
         <div class="navbar-button" :class="{ open: isOpen }">
-            <navbarButton v-bind:linkTo="'https://www.google.co.kr'" v-bind:buttonText="'FrontEnd'"></navbarButton>
-            <navbarButton v-bind:linkTo="'https://www.naver.com'" v-bind:buttonText="'BackEnd'"></navbarButton>
-            <navbarButton v-bind:buttonText="'DeepLearning'"></navbarButton>
-            <navbarButton v-bind:buttonText="'Android'"></navbarButton>
+            <navbarButton v-for="myObject in myObjects" v-bind:linkTo="myObject.linkTo" v-bind:buttonText="myObject.buttonText"></navbarButton>
         </div>
         <div class="navbar-hamburger" @click="toggle()">
             <span id="hambg">
@@ -26,8 +23,26 @@
     export default {
         name: 'navbar',
         data: function () {
+            const myObjects = [
+                {
+                    linkTo: 'https://www.google.co.kr',
+                    buttonText: 'FrontEnd'
+                },
+                {
+                    linkTo: 'https://www.naver.com',
+                    buttonText: 'BackEnd'
+                },
+                {
+                    linkTo: 'http://prography.org/',
+                    buttonText: 'DeepLearning'
+                },
+                {
+                    buttonText: 'Android'
+                }
+            ];
             return {
-                isOpen: false
+                isOpen: false,
+                myObjects
             };
         },
         methods: {
@@ -146,10 +161,6 @@
             display: flex;
             width: 100%;
             background-color: #fff;
-        }
-
-        .navbar-button>button{
-
         }
 
         #hambg {
